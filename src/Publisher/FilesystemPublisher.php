@@ -170,6 +170,8 @@ class FilesystemPublisher extends Publisher
             return false;
         }
 
+        chmod($temporaryPath, 0775);
+
         // Move the temporary file to the desired location (prevents unlocked files from being read during write)
         $publishPath = $this->getDestPath() . DIRECTORY_SEPARATOR . $filePath;
         Filesystem::makeFolder(dirname($publishPath));
